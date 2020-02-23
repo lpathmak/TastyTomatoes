@@ -6,7 +6,10 @@
   "scripts": {
     "client": "cd client && npm start",
     "server": "cd server && npm start",
-    "start": "concurrently --kill-others \"npm run server\" \"npm run client\""
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\"",
+    "client-install": "cd client && npm install && cd ..",
+    "server-install": "cd server && npm install && cd ..",
+    "install": "npm run client-install && npm run server-install"
   },
   "repository": {
     "type": "git",
