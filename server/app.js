@@ -8,6 +8,7 @@ var logger = require('morgan');
 var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var restaurantsRouter = require('./routes/restaurants');
 
 var app = express();
 
@@ -15,7 +16,7 @@ var app = express();
 var whitelist = ['http://localhost:3000', 'http://localhost:3001'];
 var corsOptions = {   
     origin: function (origin, callback) {     
-         if (whitelist.indexOf(origin) !== -1) {
+         if (origin === undefined || whitelist.indexOf(origin) !== -1) {
              callback(null, true)     
          } else {
              callback(new Error('Not allowed by CORS'))
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/restaurants', restaurantsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
