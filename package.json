@@ -24,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/lpathmak/TastyTomatoes/issues"
   },
-  "homepage": "https://github.com/lpathmak/TastyTomatoes#readme"
+  "homepage": "https://github.com/lpathmak/TastyTomatoes#readme",
+  "dependencies": {
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
+  }
 }
