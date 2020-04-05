@@ -3,13 +3,15 @@ import {
   Link
 } from "react-router-dom";
 // components
+import Header from '../components/Header'
 import { ContainerTestHeader } from './home/TestHeader'
 import { ContainerIncrementButton, ContainerDecrementButton} from './home/TestButton1'
-import './home/Home.css';
+import './Home.css';
 
 function Home() {
   return (
     <div className="Home">
+      <Header />
       <header className="Home-header">
         <ContainerTestHeader />
         <ContainerIncrementButton name="Increment"/>

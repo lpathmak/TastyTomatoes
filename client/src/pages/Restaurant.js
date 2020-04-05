@@ -2,7 +2,7 @@ import React from 'react';
 import {
   useLocation
 } from "react-router-dom";
-import './restaurant/Restaurant.css';
+import './Restaurant.css';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);

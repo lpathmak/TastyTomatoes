@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 export class TestButton1 extends React.Component {
-    render() {
-      return <button onClick={this.props.handleClick}>{this.props.name}</button>;
-    }
+  render() {
+    return <button onClick={this.props.handleClick}>{this.props.name}</button>;
+  }
 }
 
 const mapDispatchForIncrement = dispatch => {
