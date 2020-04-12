@@ -1,14 +1,18 @@
 import React from 'react';
+
+// components
 import Title from './header/Title'
+import UploadButton from './header/UploadButton'
+import SearchBar from './header/SearchBar'
 
 function Header() {
   return (
-    <div className="Header">
-      <div class="pure-g">
-        <div class="pure-u-1-5"><Title /></div>
-        <div class="pure-u-2-5"></div>
-        <div class="pure-u-1-5"><p>Search Bar</p></div>
-        <div class="pure-u-1-5"><p>Upload</p></div>
+    <div className="header">
+      <div className="pure-g">
+        <div className="pure-u-1-5"><Title /></div>
+        <div className="pure-u-2-5"></div>
+        <div className="pure-u-1-5"><SearchBar /></div>
+        <div className="pure-u-1-5"><UploadButton /></div>
       </div>
     </div>
   );

@@ -21,6 +21,14 @@ router.get('/listings', function(req, res, next) {
     res.send(restaurantList);
 });
 
+router.get('/dishes', function(req, res, next) {
+  location = {};
+  location.postalCode = req.query.postalCode;
+  location.ipAddress = req.query.ipAddress;
+  location.city = req.query.city;
+  location.country = req.query.country;
+});
+
 /* Retrieve list of restaurants based on query parameters */
 function getRestaurantList(location, sortPriority, numResults) {
     restaurantList = [];
@@ -39,6 +47,10 @@ function getRestaurantList(location, sortPriority, numResults) {
             break;
     }
     return restaurantList;
+}
+
+function rankDishes(dishes, rankDefinition) {
+
 }
 
 module.exports = router;
