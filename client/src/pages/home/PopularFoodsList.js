@@ -1,30 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 // components
-import PopularFoodItem from './popularFoodsList/PopularFoodItem'
+import PopularFoodItem from './popularFoodsList/PopularFoodItem';
 
-function PopularFoodsList() {
+//Start
+const PopularFoodsList = () => {
+  const [hasError, setErrors] = useState(false);
+  const [dishes, setDishes] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch(`http://localhost:3001/restaurants/dishes?type=1&numResults=5&location=canada`);
+      res
+        .json()
+        .then(res => setDishes(res))
+        .catch(err => setErrors(err));
+    }
+
+    fetchData();
+  });
+
   return (
     <div className="popular-foods-list">
       <div pure-g>
-        <div className="pure-u-1">
-          <PopularFoodItem restaurantName="Restaurant 1" dishName="Popular Dish 1"/>
-        </div>
-        <div className="pure-u-1">
-          <PopularFoodItem restaurantName="Restaurant 2" dishName="Popular Dish 2"/>
-        </div>
-        <div className="pure-u-1">
-          <PopularFoodItem restaurantName="Restaurant 3" dishName="Popular Dish 3"/>
-        </div>
-        <div className="pure-u-1">
-          <PopularFoodItem restaurantName="Restaurant 4" dishName="Popular Dish 4"/>
-        </div>
-        <div className="pure-u-1">
-          <PopularFoodItem restaurantName="Restaurant 5" dishName="Popular Dish 5"/>
-        </div>
+        {dishes.map((dish) => (<div className="pure-u-1">
+          <PopularFoodItem restaurantName={dish.restaurantName} dishName= {dish.name}/>
+          </div>))}
       </div>
     </div>
-  );
+  )
 }
 
 export default PopularFoodsList;
