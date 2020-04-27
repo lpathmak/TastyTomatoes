@@ -18,7 +18,7 @@ const PopularFoodsList = () => {
     }
 
     fetchData();
-  });
+  }, []);
 
   return (
     <div className="popular-foods-list">
