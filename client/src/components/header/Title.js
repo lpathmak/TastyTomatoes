@@ -6,7 +6,7 @@ import {
 function Title() {
   return (
     <div className="Home">
-      <Link to="/"><h1 class="title-logo">Tasty Tomatoes</h1></Link>
+      <Link to="/">Tasty Tomatoes</Link>
     </div>
   );
 }

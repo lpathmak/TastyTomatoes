@@ -9,14 +9,15 @@ import { Provider } from 'react-redux';
 import store from './store'
 import './App.css';
 // pages
-import Home from './pages/Home'
-import Restaurant from './pages/Restaurant'
+import Home from './pages/Home';
+import Restaurant from './pages/Restaurant';
+import Header from './components/Header';
 
 function App() {
   return (
-    <Provider store={store}>
+    <>
       <Router>
-        <div>
+        <Header/>
           {/*
             A <Switch> looks through all its children <Route>
             elements and renders the first one whose path
@@ -28,13 +29,11 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/restaurant">
-              <Restaurant />
+            <Route path="/restaurant/:id" render={(props) => <Restaurant {...props}/>}>
             </Route>
           </Switch>
-        </div>
       </Router>
-    </Provider>
+    </>
   );
 }
 
