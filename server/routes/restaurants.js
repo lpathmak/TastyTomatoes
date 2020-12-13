@@ -21,24 +21,58 @@ router.get('/listings', function(req, res, next) {
     res.send(restaurantList);
 });
 
+router.get('/dishes', function(req, res, next) {
+
+  location = req.query.location;
+  sortPriority = req.query.type;
+  numResults = req.query.numResults;
+
+  //get restaurants within range
+  restaurants = getRestaurantList(location); 
+
+  //get dishes based on restaurant using priority
+  dishes = getDishesFromRestaurants(restaurants, sortPriority, numResults); 
+
+  res.send(dishes)
+
+});
+
 /* Retrieve list of restaurants based on query parameters */
-function getRestaurantList(location, sortPriority, numResults) {
+function getRestaurantList(location) {
     restaurantList = [];
+
+    //TODO replace with sql call
+    //dummy data
+    for(let i = 1; i <= 5; i++) {
+        dummyRestaurant = {};
+        dummyRestaurant.name = '#' + i + ' Restaurant';
+        dummyRestaurant.location = location;
+        restaurantList.push(dummyRestaurant);
+    }
+
+    return restaurantList;
+}
+
+function getDishesFromRestaurants(restaurants, sortPriority, numResults) {
+    dishes = [];
     switch(sortPriority) {
         // By popularity
         case '1':
+            //dummy data
             for(let i = 1; i <= numResults; i++) {
-                dummyRestaurant = {};
-                dummyRestaurant.name = '#' + i + ' Restaurant';
-                dummyRestaurant.location = location;
-                restaurantList.push(dummyRestaurant);
+                dummyDish = {};
+                dummyDish.name = '#' + i + ' Dishes';
+                dummyDish.restaurantName = restaurants[i-1].name;
+                dishes.push(dummyDish);
             }
+
             break;
         default:
-            restaurantList.push('Unhandled sortPriority: ' + sortPriority);
+            dishes.push('Unhandled sortPriority: ' + sortPriority);
             break;
     }
-    return restaurantList;
+
+    return dishes;
 }
 
 module.exports = router;
