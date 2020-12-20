@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const db = require('./db');
+
 // cors needed for cross origin requests between server/client on 2 different ports
 var cors = require('cors');
 var indexRouter = require('./routes/index');

@@ -5,8 +5,6 @@ import {
   Route
 } from "react-router-dom";
 // redux
-import { Provider } from 'react-redux';
-import store from './store'
 import './App.css';
 // pages
 import Home from './pages/Home';
